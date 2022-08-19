@@ -3,9 +3,12 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import commands.HomeCommand;
+import commands.SetHomeCommand;
 import commands.TeleportRequestCommand;
 import commands.WhisperMessageCommand;
 import entities.User;
+import entities.UserHome;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -18,11 +21,14 @@ public class MyPlugin extends JavaPlugin {
     private String databaseUrl = "jdbc:mysql://testuser:testuser123@localhost/minecraft_spigot_server_db";
     private ConnectionSource connectionSource;
     private Dao<User, Integer> userDao;
+    private Dao<UserHome, Integer> userHomeDao;
 
     public MyPlugin() throws SQLException {
         this.connectionSource = new JdbcConnectionSource(databaseUrl);
         this.userDao = DaoManager.createDao(connectionSource, User.class);
+        this.userHomeDao = DaoManager.createDao(connectionSource, UserHome.class);
         TableUtils.createTableIfNotExists(connectionSource, User.class);
+        TableUtils.createTableIfNotExists(connectionSource, UserHome.class);
     }
 
     @Override
@@ -39,6 +45,8 @@ public class MyPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MyEventListener(this.userDao), this);
         getCommand("tprequest").setExecutor(new TeleportRequestCommand());
         getCommand("whispermsg").setExecutor(new WhisperMessageCommand());
+        getCommand("sethome").setExecutor(new SetHomeCommand(this.userDao, this.userHomeDao));
+        getCommand("home").setExecutor(new HomeCommand(this.userDao, this.userHomeDao));
     }
 
     @Override

@@ -11,3 +11,9 @@ commands:
   whispermsg:
     description: whispers a msg to a user
     usage: /<command> message
+  sethome:
+    description: Sets the users home to the current coordinates
+    usage: /<command>
+  home:
+    description: Teleports the user to their set home
+    usage: /<command>

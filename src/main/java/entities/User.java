@@ -3,7 +3,11 @@ package entities;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-@DatabaseTable(tableName = "users")
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+@Entity(name = "users")
 public class User {
 
     @DatabaseField(generatedId = true)
@@ -15,7 +19,19 @@ public class User {
     @DatabaseField()
     private String username;
 
+    @OneToOne
+    @JoinColumn(name = "home_id")
+    private UserHome home;
+
     public User() {
+    }
+
+    public UserHome getHome() {
+        return home;
+    }
+
+    public void setHome(UserHome home) {
+        this.home = home;
     }
 
     public int getId() {
