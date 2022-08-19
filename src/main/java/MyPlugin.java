@@ -3,6 +3,8 @@ import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
+import commands.TeleportRequestCommand;
+import commands.WhisperMessageCommand;
 import entities.User;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -35,6 +37,8 @@ public class MyPlugin extends JavaPlugin {
         this.getLogger().log(Level.INFO, "Hello, World!");
         getLogger().log(Level.INFO, "Hey. My Plugin!");
         getServer().getPluginManager().registerEvents(new MyEventListener(this.userDao), this);
+        getCommand("tprequest").setExecutor(new TeleportRequestCommand());
+        getCommand("whispermsg").setExecutor(new WhisperMessageCommand());
     }
 
     @Override

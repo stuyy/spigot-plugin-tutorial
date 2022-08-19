@@ -8,3 +8,6 @@ commands:
       - tpr
       - tpreq
     usage: /<command> username
+  whispermsg:
+    description: whispers a msg to a user
+    usage: /<command> message
