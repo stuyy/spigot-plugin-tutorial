@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="tutorial-plugin">
+    <output-path>$PROJECT_DIR$/../spigot-server/plugins/tutorial_plugin</output-path>
+    <root id="archive" name="tutorial-plugin.jar">
+      <element id="module-output" name="Spigot-Plugin-Tutorial" />
+      <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.19.4" />
+      <element id="library" level="project" name="Maven: com.j256.ormlite:ormlite-core:6.1" />
+      <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.30" />
+      <element id="library" level="project" name="Maven: com.j256.ormlite:ormlite-jdbc:6.1" />
+    </root>
+  </artifact>
+</component>

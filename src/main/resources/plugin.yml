@@ -1,0 +1,10 @@
+name: MyPlugin
+version: 1.0
+main: MyPlugin
+commands:
+  tprequest:
+    description: Requests a teleport to user
+    aliases:
+      - tpr
+      - tpreq
+    usage: /<command> username
